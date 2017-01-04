@@ -1,11 +1,18 @@
-#/firmware	vfat	/dev/block/bootdevice/by-name/apnhlos	flags=mounttodecrypt;fsflags=ro,context=u:object_r:firmware_file:s0
-/boot		emmc	/dev/block/bootdevice/by-name/boot
-/recovery	emmc	/dev/block/bootdevice/by-name/recovery	flags=backup=1
-/system		ext4	/dev/block/bootdevice/by-name/system
-/data		ext4	/dev/block/bootdevice/by-name/userdata	flags=encryptable=footer;length=-16384
-/cache		ext4	/dev/block/bootdevice/by-name/cache
-/efs		ext4	/dev/block/bootdevice/by-name/efs	flags=backup=1;display="EFS"
-/modemst1	emmc	/dev/block/bootdevice/by-name/modemst1	flags=backup=1;subpartitionof=/efs
-/modemst2	emmc	/dev/block/bootdevice/by-name/modemst2	flags=backup=1;subpartitionof=/efs
-/external_sd	vfat	/dev/block/mmcblk0p1 /dev/block/mmcblk0	flags=display="Micro SDcard";storage;wipeingui;removable;encryptable=footer;length=-16384
-/usb-otg	vfat	/dev/block/sde1 /dev/block/sde		flags=display="USB-OTG";storage;wipeingui;removable
+/boot		   emmc	/dev/block/bootdevice/by-name/boot
+/recovery	   emmc	/dev/block/bootdevice/by-name/recovery	 flags=backup=1
+/system		   ext4	/dev/block/bootdevice/by-name/system
+/data		   ext4	/dev/block/bootdevice/by-name/userdata	 flags=encryptable=footer;length=-16384
+/cache		   ext4	/dev/block/bootdevice/by-name/cache      flags=backup=1
+/efs		   ext4	/dev/block/bootdevice/by-name/efs	 flags=backup=1;display="EFS"
+/modemst1	   emmc	/dev/block/bootdevice/by-name/modemst1	 flags=backup=1;subpartitionof=/efs
+/modemst2	   emmc	/dev/block/bootdevice/by-name/modemst2	 flags=backup=1;subpartitionof=/efs
+/firmware	   vfat	/dev/block/bootdevice/by-name/apnhlos	 flags=backup=1;display="apnhlos";mounttodecrypt;fsflags=context=u:object_r:firmware_file:s0
+/firmware-modem    vfat /dev/block/bootdevice/by-name/modem      flags=backup=1;display="modem"
+/misc              emmc /dev/block/bootdevice/by-name/misc       flags=backup=1;display="misc"
+/persdata          ext4 /dev/block/bootdevice/by-name/persdata   flags=backup=1;display="persdata"
+/persist           ext4 /dev/block/bootdevice/by-name/persist    flags=backup=1;display="persist"
+/persistent        emmc /dev/block/bootdevice/by-name/persistent flags=backup=1;display="persistent"          
+/steady            emmc /dev/block/bootdevice/by-name/steady     flags=backup=1;display="steady"
+#
+/external_sd	   vfat	/dev/block/mmcblk0p1 /dev/block/mmcblk0	 flags=display="Micro SDcard";storage;wipeingui;removable;encryptable=footer;length=-16384
+/usb-otg	   vfat	/dev/block/sde1 /dev/block/sde		 flags=display="USB-OTG";storage;wipeingui;removable
