@@ -80,8 +80,8 @@ TW_EXCLUDE_SUPERSU := true
 TW_INCLUDE_CRYPTO := true
 # Disable Qualcomm and Samsung encryption as we are missing msm8996 keystore support
 #TW_INCLUDE_CRYPTO_SAMSUNG := true
-#TARGET_HW_DISK_ENCRYPTION := true
-#TARGET_KEYMASTER_WAIT_FOR_QSEE := true
+TARGET_HW_DISK_ENCRYPTION := true
+TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
 # Asian region languages
 TW_EXTRA_LANGUAGES := true
