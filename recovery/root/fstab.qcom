@@ -12,6 +12,7 @@
 /dev/block/bootdevice/by-name/cache     /cache            f2fs    nosuid,nodev,noatime,nodiratime,inline_xattr,flush_merge,data_flush                                             wait,check,formattable
 /dev/block/bootdevice/by-name/cache     /cache            ext4    noatime,nosuid,nodev,noauto_da_alloc,discard,journal_async_commit,data=ordered,errors=panic	                  wait,check,formattable
 /dev/block/bootdevice/by-name/efs       /efs              ext4    noatime,nosuid,nodev,noauto_da_alloc,discard,journal_async_commit,data=ordered,errors=panic                     wait,check
+/dev/block/bootdevice/by-name/fota      /fota             emmc    defaults                                            defaults
 /dev/block/bootdevice/by-name/misc      /misc             emmc    defaults                                            defaults
 # VOLD
 /dev/block/bootdevice/by-name/hidden    /preload          	ext4    defaults    voldmanaged=preload:auto
