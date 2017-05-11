@@ -9,6 +9,7 @@
 /modemst2	   emmc	/dev/block/bootdevice/by-name/modemst2	 flags=backup=1;subpartitionof=/efs
 /firmware	   vfat	/dev/block/bootdevice/by-name/apnhlos	 flags=backup=1;display="firmware";mounttodecrypt;fsflags=context=u:object_r:firmware_file:s0
 /firmware-modem    vfat /dev/block/bootdevice/by-name/modem      flags=backup=1;display="modem"
+/fota              emmc /dev/block/bootdevice/by-name/fota       display="fota"
 /misc              emmc /dev/block/bootdevice/by-name/misc       flags=backup=1;display="misc"
 /persdata          ext4 /dev/block/bootdevice/by-name/persdata   flags=backup=1;display="persdata"
 /persist           ext4 /dev/block/bootdevice/by-name/persist    flags=backup=1;display="persist"
