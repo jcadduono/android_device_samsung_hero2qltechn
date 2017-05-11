@@ -75,6 +75,7 @@ TW_INCLUDE_NTFS_3G := true
 TW_NO_EXFAT_FUSE := true
 # No love for the wicked (device ships with M)
 TW_EXCLUDE_SUPERSU := true
+TW_USE_NEW_MINADBD := true
 
 # Encryption support
 TW_INCLUDE_CRYPTO := true
