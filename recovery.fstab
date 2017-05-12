@@ -16,5 +16,5 @@
 /persistent        emmc /dev/block/bootdevice/by-name/persistent flags=backup=1;display="persistent"          
 /steady            emmc /dev/block/bootdevice/by-name/steady     flags=backup=1;display="steady"
 #
-/external_sd	   vfat	/dev/block/mmcblk0p1 /dev/block/mmcblk0	 flags=display="Micro SDcard";storage;wipeingui;removable;encryptable=footer;length=-16384
+/external_sd	   vfat	/dev/block/mmcblk0p1 /dev/block/mmcblk0	 flags=display="Micro SDcard";storage;settingsstorage;wipeingui;removable;encryptable=footer;length=-16384
 /usb-otg	   vfat	/dev/block/sde1 /dev/block/sde		 flags=display="USB-OTG";storage;wipeingui;removable
