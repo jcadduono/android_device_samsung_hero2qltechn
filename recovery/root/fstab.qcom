@@ -5,12 +5,16 @@
 #TODO: Add 'check' as fs_mgr_flags with data partition.
 # Currently we dont have e2fsck compiled. So fs check would failed.
 
-#<src>                                  <mnt_point>  <type>  <mnt_flags and options>                                                                      <fs_mgr_flags>
-/dev/block/bootdevice/by-name/system    /system      ext4    ro,errors=panic,noload                                                                       wait
-/dev/block/bootdevice/by-name/userdata  /data        ext4    noatime,nosuid,nodev,noauto_da_alloc,discard,journal_async_commit,data=ordered,errors=panic  wait,check,encryptable=footer
-/dev/block/bootdevice/by-name/efs       /efs         ext4    noatime,nosuid,nodev,noauto_da_alloc,discard,journal_async_commit,data=ordered,errors=panic  wait,check
-
+#<src>                                  <mnt_point>       <type>  <mnt_flags and options>                     <fs_mgr_flags>
+/dev/block/bootdevice/by-name/system    /system           ext4    ro,noatime,errors=panic,noload                                                                                  wait
+/dev/block/bootdevice/by-name/userdata  /data             f2fs    nosuid,nodev,noatime,nodiratime,inline_xattr,data_flush                                                         wait,check
+/dev/block/bootdevice/by-name/userdata  /data             ext4    noatime,nosuid,nodev,noauto_da_alloc,discard,journal_async_commit,data=ordered,errors=panic,debug_bdinfo        wait,check
+/dev/block/bootdevice/by-name/cache     /cache            f2fs    nosuid,nodev,noatime,nodiratime,inline_xattr,flush_merge,data_flush                                             wait,check,formattable
+/dev/block/bootdevice/by-name/cache     /cache            ext4    noatime,nosuid,nodev,noauto_da_alloc,discard,journal_async_commit,data=ordered,errors=panic	                  wait,check,formattable
+/dev/block/bootdevice/by-name/efs       /efs              ext4    noatime,nosuid,nodev,noauto_da_alloc,discard,journal_async_commit,data=ordered,errors=panic                     wait,check
+/dev/block/bootdevice/by-name/fota      /fota             emmc    defaults                                            defaults
+/dev/block/bootdevice/by-name/misc      /misc             emmc    defaults                                            defaults
 # VOLD
-/dev/block/bootdevice/by-name/hidden                          /preload  ext4  defaults  voldmanaged=preload:auto
-/devices/soc/74a4900.sdhci/mmc_host/mmc*                      auto      vfat  defaults  voldmanaged=sdcard:auto
-/devices/soc/6a00000.ssusb/6a00000.dwc3/xhci-hcd.0.auto/usb*  auto      auto  defaults  voldmanaged=usb:auto
+/dev/block/bootdevice/by-name/hidden    /preload          	ext4    defaults    voldmanaged=preload:auto
+/devices/soc/74a4900.sdhci/mmc_host/mmc*                        auto    vfat    defaults    voldmanaged=sdcard:auto
+/devices/soc/6a00000.ssusb/6a00000.dwc3/xhci-hcd.0.auto/usb*    auto    auto    defaults    voldmanaged=usb:auto

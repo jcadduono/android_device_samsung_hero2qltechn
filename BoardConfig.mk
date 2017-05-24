@@ -39,11 +39,11 @@ TARGET_PREBUILT_KERNEL := $(DEVICE_TREE)/Image.gz
 TARGET_PREBUILT_DTB := $(DEVICE_TREE)/dtb.img
 
 # Boot image
-BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom androidboot.bootdevice=624000.ufshc androidboot.selinux=permissive user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=24M@0-0xffffffff rcupdate.rcu_expedited=1
+BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=24M@0-0xffffffff rcupdate.rcu_expedited=1
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 4096
 # 000RU = recovery kernel, 000KU = system kernel
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x02200000 --tags_offset 0x02000000 --board RILPA14A000RU
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x02200000 --second_offset 0x00f00000 --tags_offset 0x02000000 --board FRPPA14A000RU
 BOARD_CUSTOM_BOOTIMG_MK :=  $(DEVICE_TREE)/bootimg.mk
 
 # Partitions
@@ -75,13 +75,14 @@ TW_INCLUDE_NTFS_3G := true
 TW_NO_EXFAT_FUSE := true
 # No love for the wicked (device ships with M)
 TW_EXCLUDE_SUPERSU := true
+TW_USE_NEW_MINADBD := true
 
 # Encryption support
 TW_INCLUDE_CRYPTO := true
 # Disable Qualcomm and Samsung encryption as we are missing msm8996 keystore support
 #TW_INCLUDE_CRYPTO_SAMSUNG := true
-#TARGET_HW_DISK_ENCRYPTION := true
-#TARGET_KEYMASTER_WAIT_FOR_QSEE := true
+TARGET_HW_DISK_ENCRYPTION := true
+TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
 # Asian region languages
 TW_EXTRA_LANGUAGES := true

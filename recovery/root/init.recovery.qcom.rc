@@ -5,12 +5,29 @@ on init
     chmod 0664 /dev/ion
     chown system system /dev/ion
 
-#service qseecomd /sbin/qseecomd
-#    class core
-#    disabled
-#    user root
-#    group root system drmrpc
-#    seclabel u:r:recovery:s0
+service qseecomd /sbin/qseecomd
+    class core
+    disabled
+    user root
+    group root system drmrpc
+    seclabel u:r:recovery:s0
 
-#on property:ro.crypto.state=encrypted
-#    start qseecomd
+on property:ro.crypto.state=encrypted
+    start qseecomd
+
+on boot
+    # Update foreground and background cpusets
+    write /dev/cpuset/foreground/cpus 0-3
+    write /dev/cpuset/foreground/boost/cpus 0-3
+    write /dev/cpuset/background/cpus 0-3
+    write /dev/cpuset/system-background/cpus 0-3
+    write /dev/cpuset/top-app/cpus 0-3
+
+    # Enable sched boost
+    write /proc/sys/kernel/sched_boost 1
+
+    # save battery by switching to interactive once booted
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
